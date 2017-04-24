@@ -1,7 +1,7 @@
 <?php
 	include 'header.php';
+	$contacts = ORM::for_table('Contacts')->where('Active', True)->find_many();
 
-	$customers = ORM::for_table('Customers')->where('Active', True)->find_many();
 ?>
 <div class="breadcrumbs ace-save-state" id="breadcrumbs">
 	<ul class="breadcrumb">
@@ -9,12 +9,12 @@
 			<i class="ace-icon fa fa-home home-icon"></i>
 			<a href="#">Home</a>
 		</li>
-		<li class="active">Customers</li>
+		<li class="active">Contacts</li>
 	</ul><!-- /.breadcrumb -->
 </div>
 <div class="page-header">
-	<h1>Customers
-		<small><i class="ace-icon fa fa-angle-double-right"></i> Customer Information</small>
+	<h1>Contacts
+		<small><i class="ace-icon fa fa-angle-double-right"></i> Contact Information</small>
 	</h1>
 </div><!-- /.page-header -->
 
@@ -26,8 +26,7 @@
 				<table id="simple-table" class="table  table-bordered table-hover">
 					<thead>
 						<tr>
-							<th class="detail-col">Details</th>
-							<th>Company Name</th>
+							<th>Name</th>
 							<th>Address</th>
 							<th>Email</th>
 							<th>Phone</th>
@@ -35,41 +34,33 @@
 						</tr>
 					</thead>
 					<tbody>
-					<?php foreach($customers as $customer){
-						$_SESSION["id"] = $customer->ID;
+					<?php foreach($contacts as $contact){
+						$_SESSION["id"] = $contact->ID;
 						echo "<tr>
-							<td class='center'>
-								<div class='action-buttons'>
-									<a href='#' class='green bigger-140 show-details-btn'>
-										<i class='ace-icon fa fa-angle-double-down'></i>
-										<span class='sr-only'>Details</span>
-									</a>
-								</div>
-							</td>
-							<td><a href='editCustomers.php?id=$customer->ID'>" . $customer->Name . "</a></td>
-							<td>" . $customer->Address . "</td>
-							<td>" . $customer->Email . "</td>
-							<td>" . $customer->Phone . "</td>
+							<td><a href='editContacts.php?id=$contact->ID'>" . $contact->FirstName . " " . $contact->LastName. "</a></td>
+							<td>" . $contact->Address . "</td>
+							<td>" . $contact->Email . "</td>
+							<td>" . $contact->Phone . "</td>
 							<td>
 								<div class='hidden-sm hidden-xs btn-group'>
-
-									<button class='btn btn-xs btn-info'><a href='editCustomers.php?id=$customer->ID' class='tooltip-info' data-rel='tooltip' title='Edit'><i class='ace-icon fa fa-pencil bigger-120' style='color:white;'></i></a></button>
-									<button class='btn btn-xs btn-danger'><a href='customer.php?id=$customer->ID&type=delete' class='tooltip-error' data-rel='tooltip' title='Delete'><i class='ace-icon fa fa-trash-o bigger-120' style='color:white;'></i></a></button>
+									<button class='btn btn-xs btn-info'><a href='editContacts.php?id=$contact->ID' class='tooltip-info' data-rel='tooltip' title='Edit'><i class='ace-icon fa fa-pencil bigger-120' style='color:white;'></i></a></button>
+									<button class='btn btn-xs btn-danger'><a href='contact.php?id=$contact->ID&type=delete' class='tooltip-error' data-rel='tooltip' title='Delete'><i class='ace-icon fa fa-trash-o bigger-120' style='color:white;'></i></a></button>
 								</div>
 								<div class='hidden-md hidden-lg'>
 									<div class='inline pos-rel'>
 										<button class='btn btn-minier btn-primary dropdown-toggle' data-toggle='dropdown' data-position='auto'><i class='ace-icon fa fa-cog icon-only bigger-110'></i></button>
-										<ul class='dropdown-menu dropdown-only-icon dropdown-yellow dropdown-menu-right dropdown-caret dropdown-close'>
-											<li>
-												<a href='editCustomers.php?$customer->ID' class='tooltip-success' data-rel='tooltip' title='Edit'>
-												<span class='green'>
-													<i class='ace-icon fa fa-pencil-square-o bigger-120'></i>
-												</span>
-												</a>
-											</li>
+
+								<ul class='dropdown-menu dropdown-only-icon dropdown-yellow dropdown-menu-right dropdown-caret dropdown-close'>
+									<li>
+										<a href='editContacts.php?$contact->ID' class='tooltip-success' data-rel='tooltip' title='Edit'>
+											<span class='green'>
+												<i class='ace-icon fa fa-pencil-square-o bigger-120'></i>
+											</span>
+										</a>
+									</li>
 
 									<li>
-										<a href='customer.php?$customer->ID&type=delete' class='tooltip-error' data-rel='tooltip' title='Delete'>
+										<a href='contact.php?id=$contact->ID&type=delete' class='tooltip-error' data-rel='tooltip' title='Delete'>
 											<span class='red'>
 												<i class='ace-icon fa fa-trash-o bigger-120'></i>
 											</span>

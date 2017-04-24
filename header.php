@@ -163,32 +163,11 @@ ORM::configure(array(
 								</a>
 								<b class="arrow"></b>
 							</li>
-							<li class="">
-								<a href="editProject.php">
-									<i class="menu-icon fa fa-caret-right"></i>
-									Update Project
-								</a>
-								<b class="arrow"></b>
-							</li>
-							<li class="">
-								<a href="tables.html">
-									<i class="menu-icon fa fa-caret-right"></i>
-									Simple &amp; Dynamic
-								</a>
-								<b class="arrow"></b>
-							</li>
-							<li class="">
-								<a href="jqgrid.html">
-									<i class="menu-icon fa fa-caret-right"></i>
-									jqGrid plugin
-								</a>
-								<b class="arrow"></b>
-							</li>
 						</ul>
 					</li>
           <li class="">
 						<a href="#" class="dropdown-toggle">
-							<i class="menu-icon fa fa-list"></i>
+							<i class="menu-icon fa fa-building-o"></i>
 							<span class="menu-text"> Customers </span>
 							<b class="arrow fa fa-angle-down"></b>
 						</a>
@@ -208,10 +187,27 @@ ORM::configure(array(
 								</a>
 								<b class="arrow"></b>
 							</li>
+						</ul>
+					</li>
+					<li class="">
+						<a href="#" class="dropdown-toggle">
+							<i class="menu-icon fa fa-users"></i>
+							<span class="menu-text"> Contacts </span>
+							<b class="arrow fa fa-angle-down"></b>
+						</a>
+						<b class="arrow"></b>
+						<ul class="submenu">
 							<li class="">
-								<a href="editCustomer.php">
+								<a href="contacts.php">
 									<i class="menu-icon fa fa-caret-right"></i>
-									Update Customer
+									View Contact List
+								</a>
+								<b class="arrow"></b>
+							</li>
+							<li class="">
+								<a href="addContact.php">
+									<i class="menu-icon fa fa-caret-right"></i>
+									Add New Contact
 								</a>
 								<b class="arrow"></b>
 							</li>
@@ -219,97 +215,24 @@ ORM::configure(array(
 					</li>
 					<li class="">
 						<a href="#" class="dropdown-toggle">
-							<i class="menu-icon fa fa-pencil-square-o"></i>
-							<span class="menu-text"> Forms </span>
-
+							<i class="menu-icon fa fa-clock-o"></i>
+							<span class="menu-text"> Time Logs </span>
 							<b class="arrow fa fa-angle-down"></b>
 						</a>
-
 						<b class="arrow"></b>
-
 						<ul class="submenu">
 							<li class="">
-								<a href="form-elements.html">
+								<a href="timelogs.php">
 									<i class="menu-icon fa fa-caret-right"></i>
-									Form Elements
+									View Time Log
 								</a>
-
 								<b class="arrow"></b>
 							</li>
-
 							<li class="">
-								<a href="form-elements-2.html">
+								<a href="addTime.php">
 									<i class="menu-icon fa fa-caret-right"></i>
-									Form Elements 2
+									Add New Time Log
 								</a>
-
-								<b class="arrow"></b>
-							</li>
-
-							<li class="">
-								<a href="form-wizard.html">
-									<i class="menu-icon fa fa-caret-right"></i>
-									Wizard &amp; Validation
-								</a>
-
-								<b class="arrow"></b>
-							</li>
-
-							<li class="">
-								<a href="wysiwyg.html">
-									<i class="menu-icon fa fa-caret-right"></i>
-									Wysiwyg &amp; Markdown
-								</a>
-
-								<b class="arrow"></b>
-							</li>
-
-							<li class="">
-								<a href="dropzone.html">
-									<i class="menu-icon fa fa-caret-right"></i>
-									Dropzone File Upload
-								</a>
-
-								<b class="arrow"></b>
-							</li>
-						</ul>
-					</li>
-
-					<li class="">
-						<a href="#" class="dropdown-toggle">
-							<i class="menu-icon fa fa-tag"></i>
-							<span class="menu-text"> More Pages </span>
-
-							<b class="arrow fa fa-angle-down"></b>
-						</a>
-
-						<b class="arrow"></b>
-
-						<ul class="submenu">
-							<li class="">
-								<a href="profile.html">
-									<i class="menu-icon fa fa-caret-right"></i>
-									User Profile
-								</a>
-
-								<b class="arrow"></b>
-							</li>
-
-							<li class="">
-								<a href="invoice.html">
-									<i class="menu-icon fa fa-caret-right"></i>
-									Invoice
-								</a>
-
-								<b class="arrow"></b>
-							</li>
-
-							<li class="">
-								<a href="login.html">
-									<i class="menu-icon fa fa-caret-right"></i>
-									Login &amp; Register
-								</a>
-
 								<b class="arrow"></b>
 							</li>
 						</ul>
@@ -323,15 +246,6 @@ ORM::configure(array(
 
 			<div class="main-content">
 				<div class="main-content-inner">
-					<div class="breadcrumbs ace-save-state" id="breadcrumbs">
-						<ul class="breadcrumb">
-							<li>
-								<i class="ace-icon fa fa-home home-icon"></i>
-								<a href="#">Home</a>
-							</li>
-							<li class="active">Dashboard</li>
-						</ul><!-- /.breadcrumb -->
-					</div>
 
 					<div class="page-content">
 						<div class="ace-settings-container" id="ace-settings-container">
@@ -361,11 +275,6 @@ ORM::configure(array(
 									<div class="ace-settings-item">
 										<input type="checkbox" class="ace ace-checkbox-2 ace-save-state" id="ace-settings-sidebar" autocomplete="off" />
 										<label class="lbl" for="ace-settings-sidebar"> Fixed Sidebar</label>
-									</div>
-
-									<div class="ace-settings-item">
-										<input type="checkbox" class="ace ace-checkbox-2 ace-save-state" id="ace-settings-breadcrumbs" autocomplete="off" />
-										<label class="lbl" for="ace-settings-breadcrumbs"> Fixed Breadcrumbs</label>
 									</div>
 
 									<div class="ace-settings-item">

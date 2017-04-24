@@ -5,33 +5,37 @@
 			<i class="ace-icon fa fa-home home-icon"></i>
 			<a href="/dashboard.php">Dashboard</a>
 		</li>
-		<li><a href="/customers.php">Customers</a>
-		<li class="active">Add Customer</li>
+		<li><a href="/contacts.php">Contacts</a>
+		<li class="active">Add Contact</li>
 	</ul><!-- /.breadcrumb -->
 </div>
 <div class="page-header">
-	<h1>Customers
-		<small><i class="ace-icon fa fa-angle-double-right"></i> Add New Customer</small>
+	<h1>Contact 
+		<small><i class="ace-icon fa fa-angle-double-right"></i> Add New Contact</small>
 	</h1>
 </div><!-- /.page-header -->
-
 <div class="row">
 	<div class="col-xs-12">
-		<!-- PAGE CONTENT BEGINS -->
-		<div class="row">
-			<div class="col-xs-12">
-<form class="form-horizontal" role="form" action="customer.php?type=add" method="post">
+	<!-- PAGE CONTENT BEGINS -->
+<form class="form-horizontal" role="form" action="contact.php" method="post">
 	<div class="form-group">
-		<label class="col-sm-3 control-label no-padding-right" for="form-field-1"> Customer Name </label>
+		<label class="col-sm-3 control-label no-padding-right" for="form-field-1"> First Name </label>
 		<div class="col-sm-9">
-			<input type="text" id="form-field-1" placeholder="enter customer name" class="col-xs-10 col-sm-5" />
+			<input type="text" id="form-field-1" placeholder="enter first name" class="col-xs-10 col-sm-5" />
+		</div>
+	</div>
+	<div class="space-4"></div>
+	<div class="form-group">
+		<label class="col-sm-3 control-label no-padding-right" for="form-field-1a"> Last Name </label>
+		<div class="col-sm-9">
+			<input type="text" id="form-field-1a" placeholder="enter last name" class="col-xs-10 col-sm-5" />
 		</div>
 	</div>
 	<div class="space-4"></div>
 	<div class="form-group">
 		<label class="col-sm-3 control-label no-padding-right" for="form-field-2"> Email</label>
 		<div class="col-sm-9">
-			<input type="text" id="form-field-2" name="email" placeholder="Customer Email" class="col-xs-10 col-sm-5" />
+			<input type="text" id="form-field-2" name="email" placeholder="contact Email" class="col-xs-10 col-sm-5" />
 		</div>
 	</div>
 	<div class="space-4"></div>
@@ -49,7 +53,7 @@
 			<input type="text" id="form-field-4" name="address" placeholder="Address" class="col-xs-10 col-sm-5" />
 		</div>
 	</div>
-	<div class="space-4"></div>
+	<div class="space-4"></div>	
 	<div class="form-group">
 		<label class="col-sm-3 control-label no-padding-right" for="form-field-5"> City </label>
 
@@ -63,6 +67,14 @@
 
 		<div class="col-sm-9">
 			<input type="text" id="form-field-6" name="state" placeholder="State" class="col-xs-10 col-sm-5" />
+		</div>
+	</div>
+	<div class="space-4"></div>
+	<div class="form-group">
+		<label class="col-sm-3 control-label no-padding-right" for="form-field-7"> Zipcode </label>
+
+		<div class="col-sm-9">
+			<input type="text" id="form-field-7" name="zipcode" placeholder="Zipcode" class="col-xs-10 col-sm-5" />
 		</div>
 	</div>
 <div class="clearfix form-actions">
@@ -79,5 +91,5 @@
 		</button>
 	</div></form>
 </div><!-- /.span -->
-</div><!-- /.row -->
+</div><!-- /.row -->	
 <?php include 'footer.php' ?>

@@ -1,4 +1,24 @@
 <?php include 'header.php' ?>
+<?php
+	$customers = ORM::for_table('Customers')->where('Active', True)->find_many();
+
+	$projects = ORM::forTable('Projects')
+		->table_alias('p')
+    ->select('p.*')
+    ->select('c.Name', 'CustomerName')
+		->select('c.Phone', 'CustomerPhone')
+		->join('Customers','c.ID = p.CustomerID', 'c')
+		->where('p.Active', 1)
+		->find_many();
+
+	$customersWithProjects = ORM::forTable('Customers')
+		->table_alias('c')
+		->select('c.*')
+		->select('p.ProjectName', 'ProjectName')
+		->join('Projects','p.CustomerID = c.ID', 'p')
+		->where('p.Active', 1)
+		->find_many();
+?>
 	<div class="row">
 			<div class="col-xs-12">
 				<!-- PAGE CONTENT BEGINS -->
@@ -16,7 +36,7 @@
 				<div class="hr hr32 hr-dotted"></div>
 
 				<div class="row">
-					<div class="col-sm-5">
+					<div>
 						<div class="widget-box transparent">
 							<div class="widget-header widget-header-flat">
 								<h4 class="widget-title lighter">
@@ -30,45 +50,27 @@
 									</a>
 								</div>
 							</div>
-
-							<div class="widget-body">
-								<div class="widget-main no-padding">
-									<table class="table table-bordered table-striped">
-										<thead class="thin-border-bottom">
-											<tr>
-												<th>
-													<i class="ace-icon fa fa-caret-right blue"></i>name
-												</th>
-
-												<th>
-													<i class="ace-icon fa fa-caret-right blue"></i>price
-												</th>
-
-												<th class="hidden-480">
-													<i class="ace-icon fa fa-caret-right blue"></i>status
-												</th>
-											</tr>
-										</thead>
-
-										<tbody>
-											<tr>
-												<td>internet.com</td>
-
-												<td>
-													<small>
-														<s class="red">$29.99</s>
-													</small>
-													<b class="green">$19.99</b>
-												</td>
-
-												<td class="hidden-480">
-													<span class="label label-info arrowed-right arrowed-in">on sale</span>
-												</td>
-											</tr>
-										</tbody>
-									</table>
-								</div><!-- /.widget-main -->
-							</div><!-- /.widget-body -->
+							<div>
+								<table id="simple-table" class="table  table-bordered table-hover">
+									<thead>
+										<tr>
+											<th>Company Name</th>
+											<th>Domain</th>
+											<th>Due Date</th>
+										</tr>
+									</thead>
+									<tbody>
+									<?php foreach($projects as $project){
+										echo "
+										<tr>
+											<td>" . $project->CustomerName . "</td>
+											<td>" . $project->ProjectName . "</td>
+											<td>" . $project->DueDate . "</td>
+										</tr>"
+									;} ?>
+							</tbody>
+							</table>
+							</div><!-- /.span -->
 						</div><!-- /.widget-box -->
 					</div><!-- /.col -->
 

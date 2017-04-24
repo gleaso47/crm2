@@ -4,23 +4,22 @@
 		->table_alias('p')
     ->select('p.*')
     ->select('c.Name', 'CustomerName')
-		->select('c.Phone', 'CustomerPhone')
+	  ->select('c.Phone', 'CustomerPhone')
 		->join('Customers','c.ID = p.CustomerID', 'c')
-		->where('p.Active', 1)
 		->find_many();
 ?>
 <div class="breadcrumbs ace-save-state" id="breadcrumbs">
 	<ul class="breadcrumb">
 		<li>
 			<i class="ace-icon fa fa-home home-icon"></i>
-			<a href="#">Home</a>
+			<a href="/dashboard.php">Home</a>
 		</li>
-		<li class="active">Projects</li>
+		<li class="active">Time Logs</li>
 	</ul><!-- /.breadcrumb -->
 </div>
 <div class="page-header">
-	<h1>Projects
-		<small><i class="ace-icon fa fa-angle-double-right"></i> Current Project Information</small>
+	<h1>Time Logs
+		<small><i class="ace-icon fa fa-angle-double-right"></i> Unbilled Project Time Information</small>
 	</h1>
 </div><!-- /.page-header -->
 
@@ -32,11 +31,17 @@
 				<table id="simple-table" class="table  table-bordered table-hover">
 					<thead>
 						<tr>
+							<td class="center">
+								<label class="pos-rel">
+									<input type="checkbox" class="ace" />
+									<span class="lbl"></span>
+								</label>
+							</td>
 							<th class="detail-col">Details</th>
-							<th>Domain</th>
-							<th>Company Name</th>
-							<th>Phone</th>
+							<th>Project Name</th>
+							<th>Total Hours</th>
 							<th class="hidden-480">Hourly Rate</th>
+							<th class="hidden-480">Project Total</th>
 							<th></th>
 						</tr>
 					</thead>
@@ -44,6 +49,12 @@
 					<?php foreach($projects as $project){
 						echo "
 						<tr>
+							<td class='center'>
+								<label class='pos-rel'>
+									<input type='checkbox' class='ace' />
+									<span class='lbl'></span>
+								</label>
+							</td>
 							<td class='center'>
 								<div class='action-buttons'>
 									<a href='editProjects.php?id=$project->ProjectID' class='green bigger-140 show-details-btn'>
@@ -58,22 +69,31 @@
 							<td>" . $project->HourlyRate . "</td>
 							<td>
 								<div class='hidden-sm hidden-xs btn-group'>
-									<button class='btn btn-xs btn-info'><a href='editProjects.php?id=$project->ID' class='tooltip-info' data-rel='tooltip' title='Edit'><i class='ace-icon fa fa-pencil bigger-120' style='color:white;'></i></a></button>
-									<button class='btn btn-xs btn-danger'><a href='project.php?id=$project->ID&type=delete' class='tooltip-error' data-rel='tooltip' title='Delete'><i class='ace-icon fa fa-trash-o bigger-120' style='color:white;'></i></a></button>
+									<button class='btn btn-xs btn-success'><i class='ace-icon fa fa-check bigger-120'></i></button>
+									<button class='btn btn-xs btn-info'><a href='editProjects.php?id=$project->ID'><i class='ace-icon fa fa-pencil bigger-120'></i></a></button>
+									<button class='btn btn-xs btn-danger'><i class='ace-icon fa fa-trash-o bigger-120'></i></button>
 								</div>
 								<div class='hidden-md hidden-lg'>
 									<div class='inline pos-rel'>
 										<button class='btn btn-minier btn-primary dropdown-toggle' data-toggle='dropdown' data-position='auto'><i class='ace-icon fa fa-cog icon-only bigger-110'></i></button>
 										<ul class='dropdown-menu dropdown-only-icon dropdown-yellow dropdown-menu-right dropdown-caret dropdown-close'>
 											<li>
-												<a href='editProjects.php?id=$project->ID' class='tooltip-info' data-rel='tooltip' title='Edit'>
+												<a href='#' class='tooltip-info' data-rel='tooltip' title='View'>
+													<span class='blue'>
+														<i class='ace-icon fa fa-search-plus bigger-120'></i>
+													</span>
+												</a>
+											</li>
+
+											<li>
+												<a href='editProjects.php?id=$project->ID' class='tooltip-success' data-rel='tooltip' title='Edit'>
 													<span class='green'>
 														<i class='ace-icon fa fa-pencil-square-o bigger-120'></i>
 													</span>
 												</a>
 											</li>
 											<li>
-												<a href='project.php?id=$project->ID&type=delete' class='tooltip-error' data-rel='tooltip' title='Delete'>
+												<a href='#' class='tooltip-error' data-rel='tooltip' title='Delete'>
 													<span class='red'>
 														<i class='ace-icon fa fa-trash-o bigger-120'></i>
 													</span>
@@ -151,7 +171,7 @@
 											<div class='space-6'></div>
 											<form>
 												<fieldset>
-													<textarea class='width-100' resize='none' placeholder='Type something�'></textarea>
+													<textarea class='width-100' resize='none' placeholder='Type something?'></textarea>
 												</fieldset>
 												<div class='hr hr-dotted'></div>
 												<div class='clearfix'>
